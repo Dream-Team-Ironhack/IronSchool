@@ -9,18 +9,20 @@ public class Course {
     private double money_earned;
     private Teacher teacher=null;
     private List<Student> studentList;
+    int countCourse = 0;
 
     public Course(String name, double price) {
         this.name = name;
         this.price = price;
+        setCourseId();
     }
 
     public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setCourseId() {
+        this.courseId = "C_" + String.valueOf(countCourse++);;
     }
 
     public String getName() {

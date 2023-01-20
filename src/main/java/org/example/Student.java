@@ -6,19 +6,21 @@ public class Student {
     private String address;
     private String email;
     private Course course=null;
+    int countStudent=0;
 
     public Student(String name, String address, String email) {
         this.name = name;
         this.address = address;
         this.email = email;
+        setStudentId();
     }
 
     public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setStudentId() {
+        this.studentId = "S_" + String.valueOf(countStudent++);
     }
 
     public String getName() {

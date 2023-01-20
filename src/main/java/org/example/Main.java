@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
 
+        menuLogic.initialSetUp();
 
 
 
@@ -14,10 +15,5 @@ public class Main {
     }
 
     //FINISH THIS METHOD!! :D
-   public void howManyTeachers(int n){
-       List<Teacher> teacherList = new ArrayList<>();
-        for(int i = 0; i<n; i++){
-            teacherList.add(new Teacher());
-        }
-   }
+
 }

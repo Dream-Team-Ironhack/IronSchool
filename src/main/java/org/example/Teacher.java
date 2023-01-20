@@ -4,21 +4,21 @@ public class Teacher {
     private String teacherId;
     private String name;
     private double salary;
-    int countTeacher=0;
+
 
 
     public Teacher(String name, double salary) {
         this.name = name;
         this.salary = salary;
-        setTeacherId();
+
     }
 
     public String getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId() {
-        this.teacherId = "T_" + String.valueOf(countTeacher++);
+    public void setTeacherId(String str) {
+        this.teacherId = str;
     }
 
     public String getName() {

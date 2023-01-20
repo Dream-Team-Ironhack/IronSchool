@@ -35,6 +35,7 @@ This class will have:
 -[ ]Variable called money_earned of data type double, representing the total money earned by this course (Private member)
 
 -[ ]Nullable variable called teacher of data type Teacher (Private member)
+
 -[ ]A parameterized constructor that takes name and price
 
 -[ ]Public Getter functions to access these variables
@@ -54,10 +55,15 @@ This class will have:
 -[ ]Variable called address of data type string (Private member)
 
 -[ ]Variable called email of data type string (Private member)
+
 -[ ]Nullable variable called course of data type Course, representing the course this student is enrolled into (Private member)
+
  -[ ]A parameterized constructor that takes name, address and email
+
 -[ ]Public Getter functions to access these variables
+
 -[ ]Public Setter functions to change these variables
+
 -[ ]Optional attributes are accepted if needed based on the code structure
 
 ## How the application works
@@ -66,6 +72,7 @@ This class will have:
 2. [ ]Next, the user is asked for a number of how many teachers should be created
 
 3. [ ]Next, the user is prompted to enter the details of each teacher (based on the number chosen above)
+
 4. [ ]Next, the user is asked for the number of courses to be created (Do not specify the teacher yet, there is a command for it)
 
 5. [ ]Next, the user is prompted to enter details of each course based on the number chosen above
@@ -101,9 +108,13 @@ This class will have:
 For this project you must accomplish all of the following:
 
 -[ ] Navigate through a text-based menu using Standard Input and Output.
+
 -[ ] Create unit tests for every method other than basic getters, setters, and constructors (getters and setters with logic do require unit tests).
+
 -[ ] Handle all exceptions gracefully (incorrect input should not crash the program).
+
 -[ ] Create Teachers, Courses and Students specifying their full details.
+
 -[ ] Handle receiving commands in the Standard Input that corresponds to actual actions in the system.
 
 ### Bonus
@@ -112,7 +123,11 @@ Add more commands that can help display more information such as (SHOW STUDENTS 
 
 ### Important Notes
 -[ ] Everyone in the squad should contribute equally to the project in time and lines of code written.
+
 -[ ] All code must be reviewed before it is merged into the master branch.
+
 -[ ] All squad members must participate in code review.
+
 -[ ] Every repository should have a README.md file with clear instructions, demo files, or any documentation needed so other teams don’t have problems with the review.
+
 -[ ] This is intended to be a challenging assignment. You will have to rely heavily on your teammates and independent research. Learning independently is a hallmark of a good developer and our job is to turn you into good developers. This process may be frustrating but you will learn a ton!

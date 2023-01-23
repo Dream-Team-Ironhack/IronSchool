@@ -1,12 +1,12 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class menuLogic {
 
-
+    public static Map<String, Teacher> teacherList = new HashMap<>();
+    public static Map<String, Course> courseList = new HashMap<>();
+    public static Map<String, Student> studentsList = new HashMap<>();
 
 
 
@@ -42,16 +42,21 @@ public class menuLogic {
         createTeacher();
 
         //Create courses
+        createCourses();
+
+        //Create students
+        createStudents();
 
         //Call Main Menu with Options
         mainMenu();
 
 
     }
+
     public static void createTeacher(){
         System.out.println("How many Teachers do you want to create?");
         int n = Integer.parseInt(scanner.nextLine());
-        List<Teacher> teacherList = new ArrayList<>();
+        // Map<String, Teacher> teacherList = new HashMap<>();
         int countTeacher = 1;
         for(int i = 0; i<n; i++){
             System.out.println("Enter Teacher " + (i+1) + " name");
@@ -62,44 +67,90 @@ public class menuLogic {
             newTeacher.setTeacherId("T_" + String.valueOf(countTeacher));
             countTeacher++;
 
-            teacherList.add(newTeacher);
+            teacherList.put(newTeacher.getTeacherId(), newTeacher);
         }
-        for(int r = 0; r < teacherList.size(); r++){
-            System.out.println("ID: " + teacherList.get(r).getTeacherId());
-            System.out.println("Name: " + teacherList.get(r).getName());
-            System.out.println("Salary: " + teacherList.get(r).getSalary());
+        for(String r : teacherList.keySet()){
+            System.out.println("Teacher ID: " + r + ". Name: " + teacherList.get(r).getName() + ". Salary: " + teacherList.get(r).getSalary());
         }
 
         System.out.println(teacherList.size());
     }
+
+    public static void createCourses(){
+        System.out.println("How many courses do you want to create?");
+        int n = Integer.parseInt(scanner.nextLine());
+        //Map<String, Course> courseList = new HashMap<>();
+        int countCourses = 1;
+        for(int i = 0; i<n; i++){
+            System.out.println("Enter Course's " + (i+1) + " name");
+            String courseNameInput = scanner.nextLine();
+            System.out.println("Enter " + courseNameInput + " course's price, please: ");
+            Double coursePriceInput = Double.parseDouble(scanner.nextLine());
+            Course newCourse = new Course(courseNameInput, coursePriceInput);
+            newCourse.setCourseId("C-" + String.valueOf(countCourses));
+            countCourses++;
+            courseList.put(newCourse.getCourseId(), newCourse);
+        }
+
+        for(String i : courseList.keySet()){
+            System.out.println("Course ID: " + i + ". Name: " + courseList.get(i).getName() + ". Price: " + courseList.get(i).getPrice());
+        }
+    }
+
+    public static void createStudents(){
+        System.out.println("How many students do you want to create?");
+        int n = Integer.parseInt(scanner.nextLine());
+        //Map<String, Student> studentsList = new HashMap<>();
+        int countStudents = 1;
+
+        for(int i = 0; i<n; i++){
+            System.out.println("Enter Student's " + (i+1) + " name");
+            String studentNameInput = scanner.nextLine();
+            System.out.println("Enter " + studentNameInput + " student's address, please: ");
+            String studentAddressInput = scanner.nextLine();
+            System.out.println("Enter " + studentNameInput + " student's email, please: ");
+            String studentEmailInput = scanner.nextLine();
+            Student newStudent = new Student(studentNameInput, studentAddressInput, studentEmailInput);
+            newStudent.setStudentId("S-" + String.valueOf(countStudents));
+            countStudents++;
+            studentsList.put(newStudent.getStudentId(), newStudent);
+        }
+        for(String r : studentsList.keySet()){
+            System.out.println("--------------------");
+            System.out.println("ID: " + r);
+            System.out.println("Name: " + studentsList.get(r).getName());
+            System.out.println("Address: " + studentsList.get(r).getAddress());
+            System.out.println("Email: " + studentsList.get(r).getEmail());
+        }
+
+    }
     public static void mainMenu(){
-        System.out.println("What do you want to do today?");
-        System.out.println("(1) Create Teachers");
-        System.out.println("(2) Create Students");
-        System.out.println("(3) Create Courses");
-        System.out.println("(4) Enroll student");
-        System.out.println(("(5) See Teacher List"));
-        System.out.println(("(6) See Student List"));
-        System.out.println(("(7) See Course List"));
-        System.out.println(("(8) See Profit of a course"));
+        printSeparator(30);
+        System.out.println("What do you want to do?");
+        System.out.println("(1) Enroll the student in the course");
+        System.out.println("(2) Assign the teacher to the course");
+        System.out.println("(3) Show all courses");
+        System.out.println("(4) Look up the specific course");
+        System.out.println(("(5) Show all students"));
+        System.out.println(("(6) Look up specific student"));
+        System.out.println(("(7) Show all teachers"));
+        System.out.println(("(8) Look up specific teacher"));
+        System.out.println(("(9) Show profit"));
+
         int selectedMenu = Integer.parseInt(scanner.nextLine());
-        //
-        // if (1) {createTeacher().....METHODOS
+
+        if (selectedMenu == 1){
+            School.enrollStudent();
+        }
 
     }
 
-    // Methods
-
-    //Enter number of Teachers you want to create (n)
-    //LOOP - creating n teachers
-//createTeacher
-//add teachers to List<Teacher> teacherList
-
-
-    //create Student
-    //add student to List<Student> studentList
-
-
+    public static void printSeparator(int n){
+        for (int i = 0; i < n; i++){
+            System.out.print("=");
+        }
+        System.out.println();
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
@@ -8,21 +9,21 @@ public class Course {
     private double price;
     private double money_earned;
     private Teacher teacher=null;
-    private List<Student> studentList;
-    int countCourse = 0;
+    private List<Student> studentList = new ArrayList<>();
+
 
     public Course(String name, double price) {
         this.name = name;
         this.price = price;
-        setCourseId();
+
     }
 
     public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId() {
-        this.courseId = "C_" + String.valueOf(countCourse++);;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getName() {
@@ -46,7 +47,7 @@ public class Course {
     }
 
     public void setMoney_earned(double money_earned) {
-        this.money_earned = money_earned;
+        this.money_earned += money_earned;
     }
 
     public Teacher getTeacher() {
@@ -61,7 +62,7 @@ public class Course {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public void setStudentList(Student student) {
+        this.studentList.add(student);
     }
 }

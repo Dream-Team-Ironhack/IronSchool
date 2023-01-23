@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.List;
 
+import static org.example.menuLogic.*;
+
 public class School {
 
     private String schoolName;
@@ -20,8 +22,24 @@ public class School {
 
     //-----------------------------------
     //Admin Methods:
-    public void enroll(String studentId, String courseId){
+    public static void enrollStudent(){
+        System.out.println("Please, type ID of the student you want to enroll");
+        String idStudent = scanner.nextLine();
+        System.out.println("Please, type ID of the course");
+        String idCourse = scanner.nextLine();
+        if(!courseList.get(idCourse).getStudentList().contains(studentsList.get(idStudent))){
+            courseList.get(idCourse).setStudentList(studentsList.get(idStudent));
+            studentsList.get(idStudent).setStudentCourses(courseList.get(idCourse));
+            courseList.get(idCourse).setMoney_earned(courseList.get(idCourse).getPrice());
+            System.out.println("The course has: " + courseList.get(idCourse).getMoney_earned() + " euro");
+        } else {
+            System.err.println(" The student is already enrolled in this course. Choose another command.");
+            mainMenu();
+        }
+        System.out.println("Student " + studentsList.get(idStudent).getName() + " enrolled in " + studentsList.get(idStudent).getStudentCourses().get(0).getName());
+        System.out.println("Course " + courseList.get(idCourse).getName() + " has student: " + courseList.get(idCourse).getStudentList().get(0).getName());
 
+        mainMenu();
     }
 
     public void assignTeacher(String teacherId, String courseId){

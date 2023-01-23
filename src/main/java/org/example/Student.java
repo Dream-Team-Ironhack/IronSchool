@@ -1,26 +1,29 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private String studentId;
     private String name;
     private String address;
     private String email;
-    private Course course=null;
-    int countStudent=0;
+    private List<Course> studentCourses = new ArrayList<>();
 
     public Student(String name, String address, String email) {
         this.name = name;
         this.address = address;
         this.email = email;
-        setStudentId();
+
     }
 
     public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId() {
-        this.studentId = "S_" + String.valueOf(countStudent++);
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+
     }
 
     public String getName() {
@@ -47,11 +50,11 @@ public class Student {
         this.email = email;
     }
 
-    public Course getCourse() {
-        return course;
+    public List<Course> getStudentCourses() {
+        return studentCourses;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setStudentCourses(Course course) {
+        studentCourses.add(course);
     }
 }

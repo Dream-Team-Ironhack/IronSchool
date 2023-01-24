@@ -81,24 +81,51 @@ public class School {
         return null;
     }
 
-    public List<Student> showStudents(){
-        return null;
+    public static void showStudents(){
+        for(String r : studentsList.keySet()){
+            System.out.println("--------------------");
+            System.out.println("ID: " + r);
+            System.out.println("Name: " + studentsList.get(r).getName());
+            System.out.println("Address: " + studentsList.get(r).getAddress());
+            System.out.println("Email: " + studentsList.get(r).getEmail());
+        }
+        mainMenu();
     }
 
     public Student lookUpStudent(String studentId){
         return null;
     }
 
-    public List<Teacher> showTeachers(){
-        return null;
+    public static void showTeachers(){
+        for(String r : teacherList.keySet()) {
+            System.out.println("Teacher ID: " + r + ". Name: " + teacherList.get(r).getName() + ". Salary: " + teacherList.get(r).getSalary());
+        }
+        mainMenu();
     }
 
     public Teacher lookUpTeacher(String teacherId){
         return null;
     }
 
-    public double showProfit(){
-        return 0.0;
+    public static void showProfit(){
+        double totalMoneyEarned = 0;
+        double totalSalary = 0;
+        for(String c : courseList.keySet()){
+            totalMoneyEarned += courseList.get(c).getMoney_earned();
+        }
+        for (String s : teacherList.keySet() ){
+            totalSalary += teacherList.get(s).getSalary();
+        }
+        double profit = totalMoneyEarned - totalSalary;
+        if(profit < 0){
+            System.out.println("Loses: ");
+            System.out.println(profit);
+        }else{
+            System.out.println("Profit: ");
+            System.out.println(profit);
+        }
+
+        mainMenu();
     }
 
 }

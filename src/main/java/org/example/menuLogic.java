@@ -142,7 +142,29 @@ public class menuLogic {
         if (selectedMenu == 1){
             School.enrollStudent();
         }
+        if (selectedMenu == 2){
 
+        }if (selectedMenu == 3){
+            School.showCourses();
+        }
+        if (selectedMenu == 4){
+
+        }
+        if (selectedMenu == 5){
+            School.showStudents();
+        }
+        if (selectedMenu == 6){
+
+        }
+        if (selectedMenu == 7){
+            School.showTeachers();
+        }
+        if (selectedMenu == 8){
+
+        }
+        if (selectedMenu == 9){
+            School.showProfit();
+        }
     }
 
     public static void printSeparator(int n){

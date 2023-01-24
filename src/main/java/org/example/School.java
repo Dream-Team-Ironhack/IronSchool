@@ -25,8 +25,17 @@ public class School {
     public static void enrollStudent(){
         System.out.println("Please, type ID of the student you want to enroll");
         String idStudent = scanner.nextLine();
+        while( !studentsList.containsKey(idStudent) ){
+            System.err.println("Student not found, please enter an existing ID");
+            idStudent = scanner.nextLine();
+        }
+
         System.out.println("Please, type ID of the course");
         String idCourse = scanner.nextLine();
+        while(!courseList.containsKey(idCourse)){
+            System.err.println("Course not found, please enter an existing ID");
+            idCourse = scanner.nextLine();
+        }
         if(!courseList.get(idCourse).getStudentList().contains(studentsList.get(idStudent))){
             courseList.get(idCourse).setStudentList(studentsList.get(idStudent));
             studentsList.get(idStudent).setStudentCourses(courseList.get(idCourse));
@@ -43,7 +52,10 @@ public class School {
     }
 
     public void assignTeacher(String teacherId, String courseId){
-
+        System.out.println("Please, type ID of the teacher you want to assign");
+        String idStudent = scanner.nextLine();
+        System.out.println("Please, type ID of the course");
+        String idCourse = scanner.nextLine();
     }
 
     public List<Course> showCourses(){

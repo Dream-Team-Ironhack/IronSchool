@@ -53,16 +53,31 @@ public class School {
 
     public void assignTeacher(String teacherId, String courseId){
         System.out.println("Please, type ID of the teacher you want to assign");
-        String idStudent = scanner.nextLine();
+        String idTeacher = scanner.nextLine();
+        while(!teacherList.containsKey(idTeacher)){
+            System.err.println("Teacher not found, please enter an existing ID");
+            idTeacher = scanner.nextLine();
+        }
         System.out.println("Please, type ID of the course");
         String idCourse = scanner.nextLine();
+        while(!courseList.containsKey(idCourse)){
+            System.err.println("Course not found, please enter an existing ID");
+            idCourse = scanner.nextLine();
+        }
+        /*if(!courseList.get(idCourse).get){
+
+        }*/
     }
 
-    public List<Course> showCourses(){
-       return null;
+    public static void showCourses(){
+        for(String i : courseList.keySet()){
+            System.out.println("Course ID: " + i + ". Name: " + courseList.get(i).getName() + ". Price: " + courseList.get(i).getPrice());
+        }
+        mainMenu();
     }
 
     public Course lookUpCourse(String courseId){
+
         return null;
     }
 

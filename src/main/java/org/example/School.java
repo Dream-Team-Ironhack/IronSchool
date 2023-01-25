@@ -167,7 +167,7 @@ public class School {
         mainMenu();
     }
 
-    public static void lookUpStudent(String studentId){
+    public static void lookUpStudent(){
         int countC = 1;
 
         if (studentsList.size() == 0) {
@@ -211,8 +211,35 @@ public class School {
         mainMenu();
     }
 
-    public Teacher lookUpTeacher(String teacherId){
-        return null;
+    public static void lookUpTeacher(){
+        int countC = 1;
+
+        if (teacherList.size() == 0) {
+            System.out.println("There are no teachers in our school. Please restart your program to add them.");
+            mainMenu();
+        }
+
+        System.out.println("Please, type ID of the teacher you want to display");
+        String idTeacher = scanner.nextLine();
+
+        while( !teacherList.containsKey(idTeacher) ){
+            System.err.println("Teacher not found, please enter an existing ID");
+            idTeacher = scanner.nextLine();
+        }
+        System.out.println("ID: " + teacherList.get(idTeacher).getTeacherId());
+        System.out.println("Name: " + teacherList.get(idTeacher).getName());
+        System.out.println("Salary: " + teacherList.get(idTeacher).getSalary());
+
+
+        if (teacherList.get(idTeacher).getTeacherCourses() == null) {
+            System.out.println("Teacher " + teacherList.get(idTeacher).getName() +" hasn't been assigned to any course.");
+        } else {
+            System.out.println("Course(s): ");
+            for (Course c : teacherList.get(idTeacher).getTeacherCourses()) {
+                System.out.println(countC++ + ". " + c.getName());
+            }
+        }
+        mainMenu();
     }
 
     public static void showProfit(){

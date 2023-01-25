@@ -155,13 +155,13 @@ public class menuLogic {
             School.showStudents();
         }
         if (selectedMenu == 6){
-
+            School.lookUpStudent();
         }
         if (selectedMenu == 7){
             School.showTeachers();
         }
         if (selectedMenu == 8){
-
+            School.lookUpTeacher();
         }
         if (selectedMenu == 9){
             School.showProfit();

@@ -24,8 +24,16 @@ public class School {
     //-----------------------------------
     //Admin Methods:
     public static void enrollStudent(){
+        if (studentsList.size() == 0) {
+            System.out.println("There are no students to enroll. Please restart your program to create students.");
+            mainMenu();
+        } else if (courseList.size() == 0) {
+            System.out.println("There are no courses in our database. Please restart your program create one.");
+            mainMenu();
+        }
         System.out.println("Please, type ID of the student you want to enroll");
         String idStudent = scanner.nextLine();
+
         while( !studentsList.containsKey(idStudent) ){
             System.err.println("Student not found, please enter an existing ID");
             idStudent = scanner.nextLine();
@@ -54,6 +62,13 @@ public class School {
     }
 
     public static void assignTeacher(){
+        if (teacherList.size() == 0) {
+            System.out.println("There are no teachers in our school. Please restart your program to add them.");
+            mainMenu();
+        } else if (courseList.size() == 0) {
+            System.out.println("There are no courses in our database. Please restart your program create one.");
+            mainMenu();
+        }
         System.out.println("Please, type ID of the teacher you want to assign");
         String idTeacher = scanner.nextLine();
         while(!teacherList.containsKey(idTeacher)){
@@ -82,18 +97,66 @@ public class School {
     }
 
     public static void showCourses(){
+        if (courseList.size() == 0) {
+            System.out.println("There are no courses in our database. Please restart your program create one.");
+            mainMenu();
+        }
+
         for(String i : courseList.keySet()){
             System.out.println("Course ID: " + i + ". Name: " + courseList.get(i).getName() + ". Price: " + courseList.get(i).getPrice());
         }
         mainMenu();
     }
 
-    public Course lookUpCourse(String courseId){
+    public static void lookUpCourse(){
+        int countT = 1;
+        int countS = 1;
 
-        return null;
+       if (courseList.size() == 0) {
+           System.out.println("There are no courses in our database. Please restart your program create one.");
+           mainMenu();
+       }
+
+        System.out.println("Please, type ID of the course you want to display");
+        String idCourse = scanner.nextLine();
+
+        while( !courseList.containsKey(idCourse) && courseList.size()>0 ){
+            System.err.println("Course not found, please enter an existing ID");
+            idCourse = scanner.nextLine();
+        }
+        System.out.println("ID: " + courseList.get(idCourse).getCourseId());
+        System.out.println("Name: " + courseList.get(idCourse).getName());
+        System.out.println("Price: " + courseList.get(idCourse).getPrice());
+
+        if (courseList.get(idCourse).getTeacherList() == null) {
+            System.out.println("No teacher has been assigned to this course yet.");
+
+        } else {
+            System.out.println("Teacher(s): ");
+            for (Teacher t : courseList.get(idCourse).getTeacherList()) {
+                System.out.println(countT++ + ". " + t.getName());
+            }
+        }
+
+        if (courseList.get(idCourse).getStudentList() == null) {
+            System.out.println("No students enrolled in this course yet.");
+        } else {
+            System.out.println("Student(s): ");
+            for (Student s : courseList.get(idCourse).getStudentList()) {
+                System.out.println(countS++ + ". " + s.getName());
+            }
+        }
+
+        mainMenu();
     }
 
     public static void showStudents(){
+
+        if (studentsList.size() == 0) {
+            System.out.println("There are no students in our database. Please restart your program to create students.");
+            mainMenu();
+        }
+
         for(String r : studentsList.keySet()){
             System.out.println("--------------------");
             System.out.println("ID: " + r);
@@ -109,6 +172,12 @@ public class School {
     }
 
     public static void showTeachers(){
+
+        if (teacherList.size() == 0) {
+            System.out.println("There are no teachers in our school. Please restart your program to add them.");
+            mainMenu();
+        }
+
         for(String r : teacherList.keySet()) {
             System.out.println("Teacher ID: " + r + ". Name: " + teacherList.get(r).getName() + ". Salary: " + teacherList.get(r).getSalary());
         }

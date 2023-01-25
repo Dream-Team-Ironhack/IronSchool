@@ -149,7 +149,7 @@ public class menuLogic {
             School.showCourses();
         }
         if (selectedMenu == 4){
-
+            School.lookUpCourse();
         }
         if (selectedMenu == 5){
             School.showStudents();

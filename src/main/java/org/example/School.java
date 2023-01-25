@@ -64,9 +64,15 @@ public class School {
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
         }
-        /*if(!courseList.get(idCourse).get){
 
-        }*/
+        if(!courseList.get(idCourse).getTeacherList().contains(teacherList.get(idTeacher))){
+            courseList.get(idCourse).setTeacherList(teacherList.get(idTeacher));
+            teacherList.get(teacherId).setTeacherCourses(courseList.get(idCourse));
+        } else {
+            System.err.println(" The teacher is already assigned to this course. Choose another command.");
+            mainMenu();
+        }
+
     }
 
     public static void showCourses(){

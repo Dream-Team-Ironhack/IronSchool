@@ -1,9 +1,14 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Teacher {
     private String teacherId;
     private String name;
     private double salary;
+
+    private List<Course> teacherCourses = new ArrayList<>();
 
 
 
@@ -35,5 +40,13 @@ public class Teacher {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public List<Course> getTeacherCourses() {
+        return teacherCourses;
+    }
+
+    public void setTeacherCourses(Course course) {
+        this.teacherCourses.add(course);
     }
 }

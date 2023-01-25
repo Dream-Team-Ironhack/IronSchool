@@ -10,6 +10,7 @@ public class Course {
     private double money_earned;
     private Teacher teacher=null;
     private List<Student> studentList = new ArrayList<>();
+    private List<Teacher> teacherList = new ArrayList<>();
 
 
     public Course(String name, double price) {
@@ -64,5 +65,13 @@ public class Course {
 
     public void setStudentList(Student student) {
         this.studentList.add(student);
+    }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+    public void setTeacherList(Teacher teacher) {
+        this.teacherList.add(teacher);
     }
 }

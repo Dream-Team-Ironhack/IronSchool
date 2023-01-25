@@ -14,10 +14,9 @@ public class menuLogic {
 
      static Scanner scanner = new Scanner(System.in);
 
-     public static int readInt(String prompt, int userChoices){
+     public static int readInt(int userChoices){
         int input;
         do {
-            System.out.println(prompt);
             try {
                 input = Integer.parseInt(scanner.next());
             } catch(Exception e) {
@@ -26,8 +25,8 @@ public class menuLogic {
             }
         } while (input < 1 || input > userChoices);
 
-        return input;
-    }
+            return input;
+        }
 
 
     public static void initialSetUp(){
@@ -138,7 +137,7 @@ public class menuLogic {
         System.out.println(("(8) Look up specific teacher"));
         System.out.println(("(9) Show profit"));
 
-        int selectedMenu = Integer.parseInt(scanner.nextLine());
+        int selectedMenu = readInt("",9);
 
         switch (selectedMenu) {
             case 1:

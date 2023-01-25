@@ -120,7 +120,7 @@ public class School {
         System.out.println("Please, type ID of the course you want to display");
         String idCourse = scanner.nextLine();
 
-        while( !courseList.containsKey(idCourse) && courseList.size()>0 ){
+        while( !courseList.containsKey(idCourse) ){
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
         }
@@ -167,8 +167,35 @@ public class School {
         mainMenu();
     }
 
-    public Student lookUpStudent(String studentId){
-        return null;
+    public static void lookUpStudent(String studentId){
+        int countC = 1;
+
+        if (studentsList.size() == 0) {
+            System.out.println("There are no students in our database. Please restart your program to create students.");
+            mainMenu();
+        }
+
+        System.out.println("Please, type ID of the student you want to display");
+        String idStudent = scanner.nextLine();
+
+        while( !studentsList.containsKey(idStudent) ){
+            System.err.println("Student not found, please enter an existing ID");
+            idStudent = scanner.nextLine();
+        }
+        System.out.println("ID: " + studentsList.get(idStudent).getStudentId());
+        System.out.println("Name: " + studentsList.get(idStudent).getName());
+        System.out.println("Address: " + studentsList.get(idStudent).getAddress());
+        System.out.println("Email: " + studentsList.get(idStudent).getEmail());
+
+        if (studentsList.get(idStudent).getStudentCourses() == null) {
+            System.out.println("Student has not enrolled in any course.");
+        } else {
+            System.out.println("Course(s): ");
+            for (Course c : studentsList.get(idStudent).getStudentCourses()) {
+                System.out.println(countC++ + ". " + c.getName());
+            }
+        }
+        mainMenu();
     }
 
     public static void showTeachers(){

@@ -143,6 +143,7 @@ public class menuLogic {
             School.enrollStudent();
         }
         if (selectedMenu == 2){
+            School.assignTeacher();
 
         }if (selectedMenu == 3){
             School.showCourses();

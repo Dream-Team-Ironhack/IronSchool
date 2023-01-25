@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 import static org.example.menuLogic.*;
@@ -41,17 +42,18 @@ public class School {
             studentsList.get(idStudent).setStudentCourses(courseList.get(idCourse));
             courseList.get(idCourse).setMoney_earned(courseList.get(idCourse).getPrice());
             System.out.println("The course has: " + courseList.get(idCourse).getMoney_earned() + " euro");
+            System.out.println("Student " + studentsList.get(idStudent).getName() + " enrolled in " + courseList.get(idCourse).getName() + ".");
         } else {
-            System.err.println(" The student is already enrolled in this course. Choose another command.");
-            mainMenu();
+            System.err.println(" Student " +  studentsList.get(idStudent).getName() + "is already enrolled in " + courseList.get(idCourse).getName() + " course.");
+            System.out.println("Please choose another command.");
+
         }
-        System.out.println("Student " + studentsList.get(idStudent).getName() + " enrolled in " + studentsList.get(idStudent).getStudentCourses().get(0).getName());
-        System.out.println("Course " + courseList.get(idCourse).getName() + " has student: " + courseList.get(idCourse).getStudentList().get(0).getName());
+
 
         mainMenu();
     }
 
-    public void assignTeacher(String teacherId, String courseId){
+    public static void assignTeacher(){
         System.out.println("Please, type ID of the teacher you want to assign");
         String idTeacher = scanner.nextLine();
         while(!teacherList.containsKey(idTeacher)){
@@ -67,11 +69,15 @@ public class School {
 
         if(!courseList.get(idCourse).getTeacherList().contains(teacherList.get(idTeacher))){
             courseList.get(idCourse).setTeacherList(teacherList.get(idTeacher));
-            teacherList.get(teacherId).setTeacherCourses(courseList.get(idCourse));
+            teacherList.get(idTeacher).setTeacherCourses(courseList.get(idCourse));
+            System.out.println("Teacher " + teacherList.get(idTeacher).getName() + " is assigned to " + courseList.get(idCourse).getName() + ".");
         } else {
-            System.err.println(" The teacher is already assigned to this course. Choose another command.");
-            mainMenu();
+            System.err.println("Teacher " + teacherList.get(idTeacher).getName() + " is already assigned to " + courseList.get(idCourse).getName() + " course.");
+            System.out.println(" Choose another command.");
         }
+
+
+        mainMenu();
 
     }
 

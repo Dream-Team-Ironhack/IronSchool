@@ -1,5 +1,6 @@
 package org.example;
 
+import java.lang.invoke.CallSite;
 import java.util.*;
 
 public class menuLogic {
@@ -139,33 +140,45 @@ public class menuLogic {
 
         int selectedMenu = Integer.parseInt(scanner.nextLine());
 
-        if (selectedMenu == 1){
-            School.enrollStudent();
-        }
-        if (selectedMenu == 2){
-            School.assignTeacher();
+        switch (selectedMenu) {
+            case 1:
+                School.enrollStudent();
+                break;
+            case 2:
+                School.assignTeacher();
+                break;
+            case 3:
+                School.showCourses();
+                break;
+            case 4:
+                School.lookUpCourse();
+                break;
+            case 5:
+                School.showStudents();
+                break;
+            case 6:
+                School.lookUpStudent();
+                break;
+            case 7:
+                School.showTeachers();
+                break;
+            case 8:
+                School.lookUpTeacher();
+                break;
+            case 9:
+                School.showProfit();
+                break;
+            default:
+                callMainMenu();
+//                System.out.println("Please enter a valid option from the menu");
+//                selectedMenu = Integer.parseInt(scanner.nextLine());
 
-        }if (selectedMenu == 3){
-            School.showCourses();
         }
-        if (selectedMenu == 4){
-            School.lookUpCourse();
-        }
-        if (selectedMenu == 5){
-            School.showStudents();
-        }
-        if (selectedMenu == 6){
-            School.lookUpStudent();
-        }
-        if (selectedMenu == 7){
-            School.showTeachers();
-        }
-        if (selectedMenu == 8){
-            School.lookUpTeacher();
-        }
-        if (selectedMenu == 9){
-            School.showProfit();
-        }
+
+    }
+
+    public static void callMainMenu() {
+         mainMenu();
     }
 
     public static void printSeparator(int n){

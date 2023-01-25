@@ -137,7 +137,7 @@ public class menuLogic {
         System.out.println(("(8) Look up specific teacher"));
         System.out.println(("(9) Show profit"));
 
-        int selectedMenu = readInt("",9);
+        int selectedMenu = readInt(9);
 
         switch (selectedMenu) {
             case 1:

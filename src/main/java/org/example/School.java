@@ -7,6 +7,10 @@ import static org.example.menuLogic.*;
 
 public class School {
 
+    public static Map<String, Teacher> teacherList = new HashMap<>();
+    public static Map<String, Course> courseList = new HashMap<>();
+    public static Map<String, Student> studentsList = new HashMap<>();
+
     private String schoolName;
 
     public School(String schoolName) {

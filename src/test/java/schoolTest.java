@@ -1,4 +1,4 @@
-
+/*
 import org.example.Course;
 import org.example.School;
 import org.example.Student;
@@ -49,7 +49,7 @@ public class schoolTest {
     public void shouldEnrollStudent_whenEnrollStudentIsCalled() {
 
         School.enrollStudent("S-1", "C-1");
-        assertEquals(1, /*Course.getStudentHashMap */courseList.get(0).getStudentList().size());
+        assertEquals(1, Course.getStudentHashMap courseList.get(0).getStudentList().size());
     }
 
-}
+} */

@@ -1,9 +1,7 @@
 package org.example;
 
 import java.sql.SQLOutput;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.example.menuLogic.*;
 

@@ -16,7 +16,6 @@ public class Course {
     public Course(String name, double price) {
         this.name = name;
         this.price = price;
-
     }
 
     public String getCourseId() {

@@ -1,7 +1,9 @@
 package org.example;
 
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.example.menuLogic.*;
 
@@ -150,6 +152,45 @@ public class School {
         mainMenu();
     }
 
+    public static void createCoursesMenu(){
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many courses do you want to create? ");
+                n = scan.nextInt();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
+        //Map<String, Course> courseList = new HashMap<>();
+        for(int i = 0; i<n; i++){
+            System.out.println("Enter Course's " + (i+1) + " name");
+            String courseNameInput = scanner.nextLine();
+
+            double coursePriceInput = 0;
+            while (true) {
+                try {
+                    System.out.print("Enter " + courseNameInput + " course's price, please: ");
+                    coursePriceInput = scan.nextDouble();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an valid price.");
+                    scan.next();
+                }
+            }
+
+            Course newCourse = new Course(courseNameInput, coursePriceInput);
+            newCourse.setCourseId("C-" + String.valueOf(countCourses));
+            countCourses++;
+            courseList.put(newCourse.getCourseId(), newCourse);
+        }
+        mainMenu();
+    }
+
     public static void showStudents(){
 
         if (studentsList.size() == 0) {
@@ -198,6 +239,36 @@ public class School {
         mainMenu();
     }
 
+    public static void createStudentsMenu(){
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many students do you want to create? ");
+                n = scan.nextInt();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
+        //Map<String, Student> studentsList = new HashMap<>();
+
+        for(int i = 0; i<n; i++){
+            System.out.println("Enter Student's " + (i+1) + " name");
+            String studentNameInput = scanner.nextLine();
+            System.out.println("Enter " + studentNameInput + " student's address, please: ");
+            String studentAddressInput = scanner.nextLine();
+            System.out.println("Enter " + studentNameInput + " student's email, please: ");
+            String studentEmailInput = scanner.nextLine();
+            Student newStudent = new Student(studentNameInput, studentAddressInput, studentEmailInput);
+            newStudent.setStudentId("S-" + String.valueOf(countStudents));
+            countStudents++;
+            studentsList.put(newStudent.getStudentId(), newStudent);
+        }
+        mainMenu();
+    }
     public static void showTeachers(){
 
         if (teacherList.size() == 0) {
@@ -238,6 +309,46 @@ public class School {
             for (Course c : teacherList.get(idTeacher).getTeacherCourses()) {
                 System.out.println(countC++ + ". " + c.getName());
             }
+        }
+        mainMenu();
+    }
+
+    public static void createTeacherMenu(){
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many Teachers do you want to create? ");
+                n = scan.nextInt();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
+        // Map<String, Teacher> teacherList = new HashMap<>();
+        for(int i = 0; i<n; i++){
+            System.out.println("Enter Teacher " + (i+1) + " name");
+            String teacherNameInput = scanner.nextLine();
+
+            double teacherSalaryInput = 0;
+            while (true) {
+                try {
+                    System.out.print("Enter " + teacherNameInput + "'s salary: ");
+                    teacherSalaryInput = scan.nextDouble();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an valid salary.");
+                    scan.next();
+                }
+            }
+
+            Teacher newTeacher = new Teacher(teacherNameInput, teacherSalaryInput);
+            newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
+            countTeacher++;
+
+            teacherList.put(newTeacher.getTeacherId(), newTeacher);
         }
         mainMenu();
     }

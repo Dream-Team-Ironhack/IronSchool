@@ -27,7 +27,9 @@ public class menuLogic {
 
             return input;
         }
-
+    public static int countTeacher = 1;
+    public static int  countCourses = 1;
+    public static int countStudents = 1;
 
     public static void initialSetUp(){
         System.out.println("Welcome to IronSchool - School Management System");
@@ -54,17 +56,40 @@ public class menuLogic {
     }
 
     public static void createTeacher(){
-        System.out.println("How many Teachers do you want to create?");
-        int n = Integer.parseInt(scanner.nextLine());
+        //System.out.println("How many Teachers do you want to create?");
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many Teachers do you want to create? ");
+                n = scan.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
+        //int n = Integer.parseInt(scanner.nextLine());
         // Map<String, Teacher> teacherList = new HashMap<>();
-        int countTeacher = 1;
+        //int countTeacher = 1;
         for(int i = 0; i<n; i++){
             System.out.println("Enter Teacher " + (i+1) + " name");
             String teacherNameInput = scanner.nextLine();
-            System.out.println("Enter " + teacherNameInput + "'s salary");
-            double teacherSalaryInput = Double.parseDouble(scanner.nextLine());
+
+            double teacherSalaryInput = 0;
+            while (true) {
+                try {
+                    System.out.print("Enter " + teacherNameInput + "'s salary: ");
+                    teacherSalaryInput = scan.nextDouble();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an valid salary.");
+                    scan.next();
+                }
+            }
+
             Teacher newTeacher = new Teacher(teacherNameInput, teacherSalaryInput);
-            newTeacher.setTeacherId("T_" + String.valueOf(countTeacher));
+            newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
             countTeacher++;
 
             teacherList.put(newTeacher.getTeacherId(), newTeacher);
@@ -72,20 +97,39 @@ public class menuLogic {
         for(String r : teacherList.keySet()){
             System.out.println("Teacher ID: " + r + ". Name: " + teacherList.get(r).getName() + ". Salary: " + teacherList.get(r).getSalary());
         }
-
-        System.out.println(teacherList.size());
     }
 
     public static void createCourses(){
-        System.out.println("How many courses do you want to create?");
-        int n = Integer.parseInt(scanner.nextLine());
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many courses do you want to create? ");
+                n = scan.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
         //Map<String, Course> courseList = new HashMap<>();
-        int countCourses = 1;
         for(int i = 0; i<n; i++){
             System.out.println("Enter Course's " + (i+1) + " name");
             String courseNameInput = scanner.nextLine();
-            System.out.println("Enter " + courseNameInput + " course's price, please: ");
-            Double coursePriceInput = Double.parseDouble(scanner.nextLine());
+
+
+            double coursePriceInput = 0;
+            while (true) {
+                try {
+                    System.out.print("Enter " + courseNameInput + " course's price, please: ");
+                    coursePriceInput = scan.nextDouble();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an valid price.");
+                    scan.next();
+                }
+            }
+
             Course newCourse = new Course(courseNameInput, coursePriceInput);
             newCourse.setCourseId("C-" + String.valueOf(countCourses));
             countCourses++;
@@ -98,10 +142,19 @@ public class menuLogic {
     }
 
     public static void createStudents(){
-        System.out.println("How many students do you want to create?");
-        int n = Integer.parseInt(scanner.nextLine());
+        Scanner scan = new Scanner(System.in);
+        int n = 0;
+        while (true) {
+            try {
+                System.out.print("How many students do you want to create? ");
+                n = scan.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scan.next();
+            }
+        }
         //Map<String, Student> studentsList = new HashMap<>();
-        int countStudents = 1;
 
         for(int i = 0; i<n; i++){
             System.out.println("Enter Student's " + (i+1) + " name");
@@ -125,19 +178,24 @@ public class menuLogic {
 
     }
     public static void mainMenu(){
+
         printSeparator(30);
         System.out.println("What do you want to do?");
         System.out.println("(1) Enroll the student in the course");
         System.out.println("(2) Assign the teacher to the course");
         System.out.println("(3) Show all courses");
         System.out.println("(4) Look up the specific course");
-        System.out.println(("(5) Show all students"));
-        System.out.println(("(6) Look up specific student"));
-        System.out.println(("(7) Show all teachers"));
-        System.out.println(("(8) Look up specific teacher"));
-        System.out.println(("(9) Show profit"));
+        System.out.println("(5) Add courses to the database");
+        System.out.println("(6) Show all students");
+        System.out.println("(7) Look up specific student");
+        System.out.println("(8) Add students to the database");
+        System.out.println("(9) Show all teachers");
+        System.out.println("(10) Look up specific teacher");
+        System.out.println("(11) Add teachers to the database");
+        System.out.println("(12) Show profit");
+        System.out.println("(13) Exit");
 
-        int selectedMenu = readInt(9);
+        int selectedMenu = readInt(13);
 
         switch (selectedMenu) {
             case 1:
@@ -153,20 +211,32 @@ public class menuLogic {
                 School.lookUpCourse();
                 break;
             case 5:
-                School.showStudents();
+                School.createCoursesMenu();
                 break;
             case 6:
-                School.lookUpStudent();
+                School.showStudents();
                 break;
             case 7:
-                School.showTeachers();
+                School.lookUpStudent();
                 break;
             case 8:
-                School.lookUpTeacher();
+                School.createStudentsMenu();
                 break;
             case 9:
+                School.showTeachers();
+                break;
+            case 10:
+                School.lookUpTeacher();
+                break;
+            case 11:
+                School.createTeacherMenu();
+                break;
+            case 12:
                 School.showProfit();
                 break;
+            case 13:
+                System.out.println("Thanks for using ironSchool");
+                System.exit(0);
             default:
                 callMainMenu();
 //                System.out.println("Please enter a valid option from the menu");

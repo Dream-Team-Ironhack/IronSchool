@@ -8,12 +8,14 @@ public class Student {
     private String name;
     private String address;
     private String email;
+    private static int studentCount = 1;
     private List<Course> studentCourses = new ArrayList<>();
 
     public Student(String name, String address, String email) {
         this.name = name;
         this.address = address;
         this.email = email;
+        setStudentId();
 
     }
 
@@ -21,8 +23,8 @@ public class Student {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setStudentId() {
+        this.studentId = "S-" + String.valueOf(studentCount++);
 
     }
 

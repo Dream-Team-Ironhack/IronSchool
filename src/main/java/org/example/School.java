@@ -25,8 +25,8 @@ public class School {
 
     //-----------------------------------
     //Admin Methods:
-    public static void enrollStudent(){
-        if (studentsList.size() == 0) {
+    public static void enrollStudent(String idStudent, String idCourse){
+        /* if (studentsList.size() == 0) {
             System.out.println("There are no students to enroll. Please restart your program to create students.");
             mainMenu();
         } else if (courseList.size() == 0) {
@@ -46,7 +46,7 @@ public class School {
         while(!courseList.containsKey(idCourse)){
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
-        }
+        } */
         if(!courseList.get(idCourse).getStudentList().contains(studentsList.get(idStudent))){
             courseList.get(idCourse).setStudentList(studentsList.get(idStudent));
             studentsList.get(idStudent).setStudentCourses(courseList.get(idCourse));
@@ -56,15 +56,12 @@ public class School {
         } else {
             System.err.println(" Student " +  studentsList.get(idStudent).getName() + "is already enrolled in " + courseList.get(idCourse).getName() + " course.");
             System.out.println("Please choose another command.");
-
         }
-
-
         mainMenu();
     }
 
-    public static void assignTeacher(){
-        if (teacherList.size() == 0) {
+    public static void assignTeacher(String idTeacher, String idCourse){
+        /* if (teacherList.size() == 0) {
             System.out.println("There are no teachers in our school. Please restart your program to add them.");
             mainMenu();
         } else if (courseList.size() == 0) {
@@ -82,8 +79,7 @@ public class School {
         while(!courseList.containsKey(idCourse)){
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
-        }
-
+        } */
         if(!courseList.get(idCourse).getTeacherList().contains(teacherList.get(idTeacher))){
             courseList.get(idCourse).setTeacherList(teacherList.get(idTeacher));
             teacherList.get(idTeacher).setTeacherCourses(courseList.get(idCourse));
@@ -92,10 +88,7 @@ public class School {
             System.err.println("Teacher " + teacherList.get(idTeacher).getName() + " is already assigned to " + courseList.get(idCourse).getName() + " course.");
             System.out.println(" Choose another command.");
         }
-
-
         mainMenu();
-
     }
 
     public static void showCourses(){
@@ -110,11 +103,11 @@ public class School {
         mainMenu();
     }
 
-    public static void lookUpCourse(){
+    public static void lookUpCourse(String idCourse){
         int countT = 1;
         int countS = 1;
 
-       if (courseList.size() == 0) {
+       /* if (courseList.size() == 0) {
            System.out.println("There are no courses in our database. Please restart your program create one.");
            mainMenu();
        }
@@ -125,7 +118,7 @@ public class School {
         while( !courseList.containsKey(idCourse) ){
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
-        }
+        } */
         System.out.println("ID: " + courseList.get(idCourse).getCourseId());
         System.out.println("Name: " + courseList.get(idCourse).getName());
         System.out.println("Price: " + courseList.get(idCourse).getPrice());
@@ -184,8 +177,7 @@ public class School {
             }
 
             Course newCourse = new Course(courseNameInput, coursePriceInput);
-            newCourse.setCourseId("C-" + String.valueOf(countCourses));
-            countCourses++;
+
             courseList.put(newCourse.getCourseId(), newCourse);
         }
         mainMenu();
@@ -208,10 +200,10 @@ public class School {
         mainMenu();
     }
 
-    public static void lookUpStudent(){
+    public static void lookUpStudent(String idStudent){
         int countC = 1;
 
-        if (studentsList.size() == 0) {
+        /* if (studentsList.size() == 0) {
             System.out.println("There are no students in our database. Please restart your program to create students.");
             mainMenu();
         }
@@ -222,7 +214,7 @@ public class School {
         while( !studentsList.containsKey(idStudent) ){
             System.err.println("Student not found, please enter an existing ID");
             idStudent = scanner.nextLine();
-        }
+        } */
         System.out.println("ID: " + studentsList.get(idStudent).getStudentId());
         System.out.println("Name: " + studentsList.get(idStudent).getName());
         System.out.println("Address: " + studentsList.get(idStudent).getAddress());
@@ -263,8 +255,7 @@ public class School {
             System.out.println("Enter " + studentNameInput + " student's email, please: ");
             String studentEmailInput = scanner.nextLine();
             Student newStudent = new Student(studentNameInput, studentAddressInput, studentEmailInput);
-            newStudent.setStudentId("S-" + String.valueOf(countStudents));
-            countStudents++;
+
             studentsList.put(newStudent.getStudentId(), newStudent);
         }
         mainMenu();
@@ -282,10 +273,10 @@ public class School {
         mainMenu();
     }
 
-    public static void lookUpTeacher(){
+    public static void lookUpTeacher(String idTeacher){
         int countC = 1;
 
-        if (teacherList.size() == 0) {
+        /* if (teacherList.size() == 0) {
             System.out.println("There are no teachers in our school. Please restart your program to add them.");
             mainMenu();
         }
@@ -296,7 +287,7 @@ public class School {
         while( !teacherList.containsKey(idTeacher) ){
             System.err.println("Teacher not found, please enter an existing ID");
             idTeacher = scanner.nextLine();
-        }
+        } */
         System.out.println("ID: " + teacherList.get(idTeacher).getTeacherId());
         System.out.println("Name: " + teacherList.get(idTeacher).getName());
         System.out.println("Salary: " + teacherList.get(idTeacher).getSalary());
@@ -345,8 +336,6 @@ public class School {
             }
 
             Teacher newTeacher = new Teacher(teacherNameInput, teacherSalaryInput);
-            newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
-            countTeacher++;
 
             teacherList.put(newTeacher.getTeacherId(), newTeacher);
         }

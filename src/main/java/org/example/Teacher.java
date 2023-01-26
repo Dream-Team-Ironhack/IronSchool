@@ -8,6 +8,7 @@ public class Teacher {
     private String name;
     private double salary;
 
+    private static int teacherCount = 1;
     private List<Course> teacherCourses = new ArrayList<>();
 
 
@@ -15,6 +16,7 @@ public class Teacher {
     public Teacher(String name, double salary) {
         this.name = name;
         this.salary = salary;
+        setTeacherId();
 
     }
 
@@ -22,8 +24,8 @@ public class Teacher {
         return teacherId;
     }
 
-    public void setTeacherId(String str) {
-        this.teacherId = str;
+    public void setTeacherId() {
+        this.teacherId = "T-" + String.valueOf(teacherCount++);
     }
 
     public String getName() {

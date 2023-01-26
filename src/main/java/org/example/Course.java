@@ -8,6 +8,7 @@ public class Course {
     private String name;
     private double price;
     private double money_earned;
+    private static int courseCount = 1;
     private Teacher teacher=null;
     private List<Student> studentList = new ArrayList<>();
     private List<Teacher> teacherList = new ArrayList<>();
@@ -16,14 +17,15 @@ public class Course {
     public Course(String name, double price) {
         this.name = name;
         this.price = price;
+        setCourseId();
     }
 
     public String getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setCourseId() {
+        this.courseId = "C-" + String.valueOf(courseCount++);
     }
 
     public String getName() {

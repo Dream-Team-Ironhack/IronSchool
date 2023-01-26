@@ -27,9 +27,7 @@ public class menuLogic {
 
             return input;
         }
-    public static int countTeacher = 1;
-    public static int  countCourses = 1;
-    public static int countStudents = 1;
+
 
     public static void initialSetUp(){
         System.out.println("Welcome to IronSchool - School Management System");
@@ -56,7 +54,7 @@ public class menuLogic {
     }
 
     public static void createTeacher(){
-        //System.out.println("How many Teachers do you want to create?");
+
         Scanner scan = new Scanner(System.in);
         int n = 0;
         while (true) {
@@ -69,9 +67,7 @@ public class menuLogic {
                 scan.next();
             }
         }
-        //int n = Integer.parseInt(scanner.nextLine());
-        // Map<String, Teacher> teacherList = new HashMap<>();
-        //int countTeacher = 1;
+
         for(int i = 0; i<n; i++){
             System.out.println("Enter Teacher " + (i+1) + " name");
             String teacherNameInput = scanner.nextLine();
@@ -89,8 +85,8 @@ public class menuLogic {
             }
 
             Teacher newTeacher = new Teacher(teacherNameInput, teacherSalaryInput);
-            newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
-            countTeacher++;
+            //newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
+            //countTeacher++;
 
             teacherList.put(newTeacher.getTeacherId(), newTeacher);
         }
@@ -131,8 +127,7 @@ public class menuLogic {
             }
 
             Course newCourse = new Course(courseNameInput, coursePriceInput);
-            newCourse.setCourseId("C-" + String.valueOf(countCourses));
-            countCourses++;
+
             courseList.put(newCourse.getCourseId(), newCourse);
         }
 
@@ -164,8 +159,7 @@ public class menuLogic {
             System.out.println("Enter " + studentNameInput + " student's email, please: ");
             String studentEmailInput = scanner.nextLine();
             Student newStudent = new Student(studentNameInput, studentAddressInput, studentEmailInput);
-            newStudent.setStudentId("S-" + String.valueOf(countStudents));
-            countStudents++;
+
             studentsList.put(newStudent.getStudentId(), newStudent);
         }
         for(String r : studentsList.keySet()){
@@ -177,6 +171,58 @@ public class menuLogic {
         }
 
     }
+    //__________________________________________________
+    // PROMPTING USER INPUTS
+    public static String promptStudentId(){
+         scanner.nextLine();
+        if (studentsList.size() == 0) {
+            System.out.println("There are no students to enroll. Please restart your program to create students.");
+            mainMenu();
+        }
+        System.out.println("Please, type ID of the student you want to enroll");
+        String idStudent = scanner.nextLine();
+
+        while(!studentsList.containsKey(idStudent) ){
+            System.err.println("Student not found, please enter an existing ID");
+            idStudent = scanner.nextLine();
+        }
+
+        return idStudent;
+    }
+
+    public static String promptCourseId(){
+        scanner.nextLine();
+        if (courseList.size() == 0) {
+            System.out.println("There are no courses in our database. Please restart your program create one.");
+            mainMenu();
+        }
+
+        System.out.println("Please, type ID of the course");
+        String idCourse = scanner.nextLine();
+
+        while(!courseList.containsKey(idCourse)){
+            System.err.println("Course not found, please enter an existing ID");
+            idCourse = scanner.nextLine();
+        }
+        return idCourse;
+    }
+
+    public static String promptTeacherId() {
+        scanner.nextLine();
+        if (teacherList.size() == 0) {
+            System.out.println("There are no teachers in our school. Please restart your program to add them.");
+            mainMenu();
+        }
+        System.out.println("Please, type ID of the teacher you want to assign");
+        String idTeacher = scanner.nextLine();
+
+        while (!teacherList.containsKey(idTeacher)) {
+            System.err.println("Teacher not found, please enter an existing ID");
+            idTeacher = scanner.nextLine();
+        }
+        return idTeacher;
+    }
+
     public static void mainMenu(){
 
         printSeparator(30);
@@ -199,16 +245,16 @@ public class menuLogic {
 
         switch (selectedMenu) {
             case 1:
-                School.enrollStudent();
+                School.enrollStudent(promptStudentId(),promptCourseId());
                 break;
             case 2:
-                School.assignTeacher();
+                School.assignTeacher(promptTeacherId(),promptCourseId());
                 break;
             case 3:
                 School.showCourses();
                 break;
             case 4:
-                School.lookUpCourse();
+                School.lookUpCourse(promptCourseId());
                 break;
             case 5:
                 School.createCoursesMenu();
@@ -217,7 +263,7 @@ public class menuLogic {
                 School.showStudents();
                 break;
             case 7:
-                School.lookUpStudent();
+                School.lookUpStudent(promptStudentId());
                 break;
             case 8:
                 School.createStudentsMenu();
@@ -226,7 +272,7 @@ public class menuLogic {
                 School.showTeachers();
                 break;
             case 10:
-                School.lookUpTeacher();
+                School.lookUpTeacher(promptTeacherId());
                 break;
             case 11:
                 School.createTeacherMenu();
@@ -239,11 +285,7 @@ public class menuLogic {
                 System.exit(0);
             default:
                 callMainMenu();
-//                System.out.println("Please enter a valid option from the menu");
-//                selectedMenu = Integer.parseInt(scanner.nextLine());
-
         }
-
     }
 
     public static void callMainMenu() {

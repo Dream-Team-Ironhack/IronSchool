@@ -20,6 +20,14 @@ public class Teacher {
 
     }
 
+    public static int getTeacherCount() {
+        return teacherCount;
+    }
+
+    public static void setTeacherCount(int teacherCount) {
+        Teacher.teacherCount = teacherCount;
+    }
+
     public String getTeacherId() {
         return teacherId;
     }

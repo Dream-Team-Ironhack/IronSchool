@@ -66,12 +66,32 @@ public class schoolTest {
 
     }
 
+    @AfterEach
+    public void borrar() {
+        school.setStudentsList(null);
+        Student.setStudentCount(1);
+        Teacher.setTeacherCount(1);
+        school.setCourseList(null);
+        Course.setCourseCount(1);
+        school.setTeacherList(null);
+    }
+
+    @Test
+    public void shouldAssignTeacher_whenTeacherAddedToCourse() {
+        school.assignTeacher("T-1","C-1");
+        System.out.println(school.getTeacherList().get("T-1").getName());
+        assertEquals(1, school.getTeacherList().get("T-1").getTeacherCourses().size());
+    }
+
+
     @Test
     public void shouldEnrollStudent_whenEnrollStudentIsCalled() {
 
         school.enrollStudent("S-1", "C-1");
         assertEquals(1,school.getStudentsList().get("S-1").getStudentCourses().size());
     }
+
+
 
 
 }

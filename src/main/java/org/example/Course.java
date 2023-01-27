@@ -20,6 +20,14 @@ public class Course {
         setCourseId();
     }
 
+    public static int getCourseCount() {
+        return courseCount;
+    }
+
+    public static void setCourseCount(int courseCount) {
+        Course.courseCount = courseCount;
+    }
+
     public String getCourseId() {
         return courseId;
     }

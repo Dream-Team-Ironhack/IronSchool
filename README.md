@@ -2,7 +2,7 @@
 
 IronSchool is a School Management System, that will help manage your organization with managing students, teachers and courses with some basic functionalities.
 
-by Alexis Frantz, Ester Pozo, Anastasiia Gorshantova and Raphaela Prammer.
+by Alexis Frantz, Ester Pozo, Lídia Ros, Anastasiia Gorshantova and Raphaela Prammer.
 
 ## Tech Stack
 

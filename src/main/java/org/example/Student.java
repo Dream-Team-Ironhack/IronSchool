@@ -19,6 +19,14 @@ public class Student {
 
     }
 
+    public static int getStudentCount() {
+        return studentCount;
+    }
+
+    public static void setStudentCount(int studentCount) {
+        Student.studentCount = studentCount;
+    }
+
     public String getStudentId() {
         return studentId;
     }

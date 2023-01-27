@@ -1,133 +1,177 @@
 # IronSchool
-a School Management System, that will help manage students, teachers and courses with some basic functionalities.
+
+IronSchool is a School Management System, that will help manage your organization with managing students, teachers and courses with some basic functionalities.
 
 by Alexis Frantz, Ester Pozo, Anastasiia Gorshantova and Raphaela Prammer.
 
+## Tech Stack
 
-### Teacher class
+- Java
+- Maven
+- JUnit
 
-This class will have:
+## How does the Application work?
 
--[ ]Variable called teacherId of data type string, auto-generated (Private member)
+The application runs locally in the terminal.
 
--[ ]Variable called name of data type string (Private member)
+Within the application you can create your own organization of School. The app will help your school to create Courses, Teachers and Students and further on helps your organization with daily tasks like enrollment and keeping track of the profits both on courses level and schools level.
 
--[ ]Variable called salary of data type double, representing the salary of the teacher (Private member)
+### Initial Setup:
 
--[ ]A parameterized constructor that takes name and salary
+Once you start the application by clicking the run button, you can create your organization of your school by entering your schools name.
 
--[ ]Public Getter functions to access these variables
+    Welcome to IronSchool - School Management System
+    Please enter the Name of your school
+    Iron
+    Welcome Iron!
 
--[ ]Public Setter functions to change these variables
+In the next steps, you have the possibility to already create a number of instances of <mark>teachers</mark>, <mark>courses</mark> and <mark>students</mark> Also, you have the chance to create those instances later on or even add more teachers, students or courses later.
 
--[ ]Optional attributes are accepted if needed based on the code structure
+After the creation of each instance, you will see the summary of the instances created.
 
-### Course class
+    How many Teachers do you want to create? 2
+    Enter Teacher 1 name
+    Steven Hawkings
+    Enter Steven Hawkings's salary: 50000
+    Enter Teacher 2 name
+    Steve Jobs
+    Enter Steve Jobs's salary: 50000
+    Teacher ID: T-2. Name: Steve Jobs. Salary: 50000.0
+    Teacher ID: T-1. Name: Steven Hawkings. Salary: 50000.0
 
-This class will have:
+After completing the first steps and creating your profile with the first instances, the menu with several options will show, and you can choose the task you want to execute by entering the number in the command line.
 
--[ ]Variable called courseId of data type string, auto-generated (Private member)
+    What do you want to do?
+    (1) Enroll the student in the course
+    (2) Assign the teacher to the course
+    (3) Show all courses
+    (4) Look up the specific course
+    (5) Add courses to the database
+    (6) Show all students
+    (7) Look up specific student
+    (8) Add students to the database
+    (9) Show all teachers
+    (10) Look up specific teacher
+    (11) Add teachers to the database
+    (12) Show profit
+    (13) Exit
 
--[ ]Variable called name of data type string (Private member)
+TO START WITH A COMMAND, ENTER ONLY THE NUMBER FOR EXAMPLE <mark>1</mark> NEXT TO EACH FUNCTIONALITY IN THE CONSOLE AND THE MENU WILL START AND YOU WILL BE PROMPTED FOR FURTHER INFORMATION TO FINISH THE SELECTED PROCESS.
 
--[ ]Variable called price of data type double, representing the price of this course (Private member)
+**(1) Enroll the student in the course**
 
--[ ]Variable called money_earned of data type double, representing the total money earned by this course (Private member)
+This command will allow you to enroll a student to a specific course. You will be prompted for the student's ID and the course' ID to enter and the enrollment process automatically starts. At the end you will receive a confirmation that the selected student has been enrolled to the selected course and a summary of the courses incomes so far.
+This process will update the Student List of the selected course.
 
--[ ]Nullable variable called teacher of data type Teacher (Private member)
+    1
+    Please, type ID of the student you want to enroll
+    S-2
+    Please, type ID of the course
+    C-1
+    The course has: 8000.0 euro
+    Student lala enrolled in Java.
 
--[ ]A parameterized constructor that takes name and price
+**(2) Assign the teacher to the course**
 
--[ ]Public Getter functions to access these variables
+This command will allow you to assign teachers to a course. By selecting this menu you will be prompted for the teacher's ID and the courses' ID. The teacher will be automatically assigned to the course and the teacher List within the Course Information will be updated as well as the revenues for the course.
+After entering the IDs you will see a summary of the process:
 
--[ ]Public Setter functions to change these variables
+    2
+    Please, type ID of the teacher you want to assign
+    T-1
+    Please, type ID of the course
+    C-1
+    Teacher Steven Hawkings is assigned to Java.
 
--[ ]Optional attributes are accepted if needed based on the code structure
+**(3) Show all courses**
 
-### Student class
+This menu will give you a list of all so far existing courses:
 
-This class will have:
+    3
+    Course ID: C-1. Name: Java. Price: 4000.0
+    Course ID: C-2. Name: CSS. Price: 3000.0
 
--[ ]Variable called studentId of data type string, auto-generated (Private member)
+**(4) Look up the specific course**
 
--[ ]Variable called name of data type string (Private member)
+This command will show you all the course details of the selected course, like the teachers assigned and a list of all the students enrolled to it.:
 
--[ ]Variable called address of data type string (Private member)
+    4
+    Please, type ID of the course
+    C-1
+    ID: C-1
+    Name: Java
+    Price: 4000.0
+    Teacher(s):
+    1. Steven Hawkings
+    Student(s):
+    1. Marie Curie
+    2. Marco Polo
 
--[ ]Variable called email of data type string (Private member)
+**(5) Add courses to the database**
 
--[ ]Nullable variable called course of data type Course, representing the course this student is enrolled into (Private member)
+Within this menu you can add more courses to your database by following the menus instruction and entering the course details.
 
- -[ ]A parameterized constructor that takes name, address and email
+**(6) Show all students**
 
--[ ]Public Getter functions to access these variables
+This command will show you a list of all so far existing students in your database:
 
--[ ]Public Setter functions to change these variables
+    6
+    --------------------
+    ID: S-1
+    Name: Marie Curie
+    Address: New Road 1
+    Email: mc@mc.com
+    --------------------
+    ID: S-2
+    Name: Marco Polo
+    Address: Old Road 1
+    Email: mp@mp.com
 
--[ ]Optional attributes are accepted if needed based on the code structure
+**(7) Look up specific student**
 
-## How the application works
-1. [ ]The application starts by asking the user for a name for the school
+This command prompts you for the ID of the student you want to see all the details and course in which they are enrolled:
 
-2. [ ]Next, the user is asked for a number of how many teachers should be created
+    7
+    Please, type ID of the student you want to enroll
+    S-1
+    ID: S-1
+    Name: Marie Curie
+    Address: New Road 1
+    Email: mc@mc.com
+    Course(s):
+    1. Java
+    2. Back
 
-3. [ ]Next, the user is prompted to enter the details of each teacher (based on the number chosen above)
+**(8) Add students to the database**
 
-4. [ ]Next, the user is asked for the number of courses to be created (Do not specify the teacher yet, there is a command for it)
+Within this menu you can add more students to your database by following the menus instruction and entering the student details.
 
-5. [ ]Next, the user is prompted to enter details of each course based on the number chosen above
+**(9) Show all teachers**
 
-6. [ ]Next, the user is asked for the number of students to be created (Do not specify the course yet, there is a command for it)
+This command will show you a list of all so far existing teachers in your database:
 
-7. [ ]Next, the user is prompted to enter details of each student based on the number chosen above
+    9
+    Teacher ID: T-2. Name: Steve Jobs. Salary: 50000.0
+    Teacher ID: T-1. Name: Steven Hawkings. Salary: 50000.0
 
-8. [ ]Next, the user is now prompted to enter any command of the list below to execute a specified action in the system.
+**(10) Look up specific teacher**
 
-9. [ ]The IDs should be automatically generated
+This command prompts you for the ID of the teacher you want look up and it will show all the details and course which they are assigned to:
 
-## Commands
--[ ]**ENROLL [STUDENT_ID] [COURSE_ID]**: This command will help enroll the student specified in the corresponding course. While also updating the money_earned of that course based on its price
+    10
+    Please, type ID of the teacher you want to assign
+    T-1
+    ID: T-1
+    Name: Steven Hawkings
+    Salary: 50000.0
+    Course(s):
+    1. Java
+    2. Back
 
- -[ ]**ASSIGN [TEACHER_ID] [COURSE_ID]**: This command will help assign the teacher specified to the corresponding course
+**(11) Add teachers to the database**
 
--[ ]**SHOW COURSES**: This command will display a list of all courses
+Within this menu you can add more teachers to your database by following the menus instruction and entering the teachers details.
 
- -[ ]**LOOKUP COURSE [COURSE_ID]**: This command will display the full details of the specified course
+**(12) Show profit**
 
--[ ]**SHOW STUDENTS**: This command will display a list of all students
-
--[ ]**LOOKUP STUDENT [STUDENT_ID]**: This command will display the full details of the specified student
-
--[ ]**SHOW TEACHERS**: This command will display a list of all teachers
-
- -[ ]**LOOKUP TEACHER [TEACHER_ID]**: This command will display the full details of the specified teacher
-
- -[ ]**SHOW PROFIT**: This command will calculate (The total money earned from all courses) - (The sum of all the teachers’ salaries) and return the result
-
-### Requirements
-For this project you must accomplish all of the following:
-
--[ ] Navigate through a text-based menu using Standard Input and Output.
-
--[ ] Create unit tests for every method other than basic getters, setters, and constructors (getters and setters with logic do require unit tests).
-
--[ ] Handle all exceptions gracefully (incorrect input should not crash the program).
-
--[ ] Create Teachers, Courses and Students specifying their full details.
-
--[ ] Handle receiving commands in the Standard Input that corresponds to actual actions in the system.
-
-### Bonus
-Add more commands that can help display more information such as (SHOW STUDENTS [COURSE_ID], SHOW MONEY EARNED, SHOW MONEY SPENT, etc.)
-
-
-### Important Notes
--[ ] Everyone in the squad should contribute equally to the project in time and lines of code written.
-
--[ ] All code must be reviewed before it is merged into the master branch.
-
--[ ] All squad members must participate in code review.
-
--[ ] Every repository should have a README.md file with clear instructions, demo files, or any documentation needed so other teams don’t have problems with the review.
-
--[ ] This is intended to be a challenging assignment. You will have to rely heavily on your teammates and independent research. Learning independently is a hallmark of a good developer and our job is to turn you into good developers. This process may be frustrating but you will learn a ton!
+This command will show you the profit/loss of your organization. It takes all the expenses (the sum of all teacher salaries) and subtracts all revenues (sum of revenues of each course, calculated by the courses price per student enrolled).

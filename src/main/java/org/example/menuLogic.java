@@ -88,10 +88,10 @@ public class menuLogic {
             //newTeacher.setTeacherId("T-" + String.valueOf(countTeacher));
             //countTeacher++;
 
-            school.teacherList.put(newTeacher.getTeacherId(), newTeacher);
+            school.getTeacherList().put(newTeacher.getTeacherId(), newTeacher);
         }
-        for(String r : school.teacherList.keySet()){
-            System.out.println("Teacher ID: " + r + ". Name: " + school.teacherList.get(r).getName() + ". Salary: " + school.teacherList.get(r).getSalary());
+        for(String r : school.getTeacherList().keySet()){
+            System.out.println("Teacher ID: " + r + ". Name: " + school.getTeacherList().get(r).getName() + ". Salary: " + school.getTeacherList().get(r).getSalary());
         }
     }
 
@@ -128,11 +128,11 @@ public class menuLogic {
 
             Course newCourse = new Course(courseNameInput, coursePriceInput);
 
-            school.courseList.put(newCourse.getCourseId(), newCourse);
+            school.getCourseList().put(newCourse.getCourseId(), newCourse);
         }
 
-        for(String i : school.courseList.keySet()){
-            System.out.println("Course ID: " + i + ". Name: " + school.courseList.get(i).getName() + ". Price: " + school.courseList.get(i).getPrice());
+        for(String i : school.getCourseList().keySet()){
+            System.out.println("Course ID: " + i + ". Name: " + school.getCourseList().get(i).getName() + ". Price: " + school.getCourseList().get(i).getPrice());
         }
     }
 
@@ -160,14 +160,14 @@ public class menuLogic {
             String studentEmailInput = scanner.nextLine();
             Student newStudent = new Student(studentNameInput, studentAddressInput, studentEmailInput);
 
-            school.studentsList.put(newStudent.getStudentId(), newStudent);
+            school.getStudentsList().put(newStudent.getStudentId(), newStudent);
         }
-        for(String r : school.studentsList.keySet()){
+        for(String r : school.getStudentsList().keySet()){
             System.out.println("--------------------");
             System.out.println("ID: " + r);
-            System.out.println("Name: " + school.studentsList.get(r).getName());
-            System.out.println("Address: " + school.studentsList.get(r).getAddress());
-            System.out.println("Email: " + school.studentsList.get(r).getEmail());
+            System.out.println("Name: " + school.getStudentsList().get(r).getName());
+            System.out.println("Address: " + school.getStudentsList().get(r).getAddress());
+            System.out.println("Email: " + school.getStudentsList().get(r).getEmail());
         }
 
     }
@@ -175,14 +175,14 @@ public class menuLogic {
     // PROMPTING USER INPUTS
     public static String promptStudentId(){
          scanner.nextLine();
-        if (school.studentsList.size() == 0) {
+        if (school.getStudentsList().size() == 0) {
             System.out.println("There are no students to enroll. Please restart your program to create students.");
             mainMenu();
         }
         System.out.println("Please, type ID of the student you want to enroll");
         String idStudent = scanner.nextLine();
 
-        while(!school.studentsList.containsKey(idStudent) ){
+        while(!school.getStudentsList().containsKey(idStudent) ){
             System.err.println("Student not found, please enter an existing ID");
             idStudent = scanner.nextLine();
         }
@@ -191,7 +191,7 @@ public class menuLogic {
 
     public static String promptCourseId(){
         //scanner.nextLine();
-        if (school.courseList.size() == 0) {
+        if (school.getCourseList().size() == 0) {
             System.out.println("There are no courses in our database. Please restart your program create one.");
             mainMenu();
         }
@@ -199,7 +199,7 @@ public class menuLogic {
         System.out.println("Please, type ID of the course");
         String idCourse = scanner.nextLine();
 
-        while(!school.courseList.containsKey(idCourse)){
+        while(!school.getCourseList().containsKey(idCourse)){
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
         }
@@ -208,14 +208,14 @@ public class menuLogic {
 
     public static String promptTeacherId() {
         scanner.nextLine();
-        if (school.teacherList.size() == 0) {
+        if (school.getTeacherList().size() == 0) {
             System.out.println("There are no teachers in our school. Please restart your program to add them.");
             mainMenu();
         }
         System.out.println("Please, type ID of the teacher you want to assign");
         String idTeacher = scanner.nextLine();
 
-        while (!school.teacherList.containsKey(idTeacher)) {
+        while (!school.getTeacherList().containsKey(idTeacher)) {
             System.err.println("Teacher not found, please enter an existing ID");
             idTeacher = scanner.nextLine();
         }
@@ -244,41 +244,53 @@ public class menuLogic {
 
         switch (selectedMenu) {
             case 1:
-                School.enrollStudent(promptStudentId(),promptCourseId());
+                school.enrollStudent(promptStudentId(),promptCourseId());
+                callMainMenu();
                 break;
             case 2:
-                School.assignTeacher(promptTeacherId(),promptCourseId());
+                school.assignTeacher(promptTeacherId(),promptCourseId());
+                callMainMenu();
                 break;
             case 3:
-                School.showCourses();
+                school.showCourses();
+                callMainMenu();
                 break;
             case 4:
                 scanner.nextLine();
-                School.lookUpCourse(promptCourseId());
+                school.lookUpCourse(promptCourseId());
+                callMainMenu();
                 break;
             case 5:
-                School.createCoursesMenu();
+                school.createCoursesMenu();
+                callMainMenu();
                 break;
             case 6:
-                School.showStudents();
+                school.showStudents();
+                callMainMenu();
                 break;
             case 7:
-                School.lookUpStudent(promptStudentId());
+                school.lookUpStudent(promptStudentId());
+                callMainMenu();
                 break;
             case 8:
-                School.createStudentsMenu();
+                school.createStudentsMenu();
+                callMainMenu();
                 break;
             case 9:
-                School.showTeachers();
+                school.showTeachers();
+                callMainMenu();
                 break;
             case 10:
-                School.lookUpTeacher(promptTeacherId());
+                school.lookUpTeacher(promptTeacherId());
+                callMainMenu();
                 break;
             case 11:
-                School.createTeacherMenu();
+                school.createTeacherMenu();
+                callMainMenu();
                 break;
             case 12:
-                School.showProfit();
+                school.showProfit();
+                callMainMenu();
                 break;
             case 13:
                 System.out.println("Thanks for using ironSchool");

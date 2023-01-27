@@ -1,4 +1,3 @@
-/*
 import org.example.Course;
 import org.example.School;
 import org.example.Student;
@@ -14,9 +13,10 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class schoolTest {
-    Map<String, Teacher> teacherList = new HashMap<>();
-    Map<String, Course> courseList = new HashMap<>();
-    Map<String, Student> studentsList = new HashMap<>();
+
+    public static Map<String, Teacher> teacherList = new HashMap<>();
+    public static Map<String, Course> courseList = new HashMap<>();
+    public static Map<String, Student> studentsList = new HashMap<>();
     School school;
 
     Teacher teacher1;
@@ -42,14 +42,14 @@ public class schoolTest {
         course1 = new Course("Front", 300);
         course2 = new Course("Back", 500);
 
+        studentsList.put()
         //studentsList.put(student1.getStudentId(), student1);
     }
 
     @Test
     public void shouldEnrollStudent_whenEnrollStudentIsCalled() {
-
-        School.enrollStudent("S-1", "C-1");
-        assertEquals(1, Course.getStudentHashMap courseList.get(0).getStudentList().size());
+        school.enrollStudent("S-1","C-1");
+        assertEquals(1, School.courseList.get(0).getStudentList().size());
     }
 
-} */
+}

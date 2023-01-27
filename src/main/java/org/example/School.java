@@ -7,9 +7,9 @@ import static org.example.menuLogic.*;
 
 public class School {
 
-    public static Map<String, Teacher> teacherList = new HashMap<>();
-    public static Map<String, Course> courseList = new HashMap<>();
-    public static Map<String, Student> studentsList = new HashMap<>();
+    private  Map<String, Teacher> teacherList = new HashMap<>();
+    private  Map<String, Course> courseList = new HashMap<>();
+    private  Map<String, Student> studentsList = new HashMap<>();
 
     private String schoolName;
 
@@ -25,9 +25,33 @@ public class School {
         this.schoolName = schoolName;
     }
 
+    public Map<String, Teacher> getTeacherList() {
+        return this.teacherList;
+    }
+
+    public void setTeacherList(Map<String, Teacher> teacherList) {
+        this.teacherList = teacherList;
+    }
+
+    public Map<String, Course> getCourseList() {
+        return this.courseList;
+    }
+
+    public void setCourseList(Map<String, Course> courseList) {
+        this.courseList = courseList;
+    }
+
+    public Map<String, Student> getStudentsList() {
+        return this.studentsList;
+    }
+
+    public void setStudentsList(Map<String, Student> studentsList) {
+        this.studentsList = studentsList;
+    }
+
     //-----------------------------------
     //Admin Methods:
-    public static void enrollStudent(String idStudent, String idCourse){
+    public void enrollStudent(String idStudent, String idCourse){
         /* if (studentsList.size() == 0) {
             System.out.println("There are no students to enroll. Please restart your program to create students.");
             mainMenu();
@@ -49,20 +73,20 @@ public class School {
             System.err.println("Course not found, please enter an existing ID");
             idCourse = scanner.nextLine();
         } */
-        if(!courseList.get(idCourse).getStudentList().contains(studentsList.get(idStudent))){
-            courseList.get(idCourse).setStudentList(studentsList.get(idStudent));
-            studentsList.get(idStudent).setStudentCourses(courseList.get(idCourse));
-            courseList.get(idCourse).setMoney_earned(courseList.get(idCourse).getPrice());
-            System.out.println("The course has: " + courseList.get(idCourse).getMoney_earned() + " euro");
-            System.out.println("Student " + studentsList.get(idStudent).getName() + " enrolled in " + courseList.get(idCourse).getName() + ".");
+        if(!this.courseList.get(idCourse).getStudentList().contains(this.studentsList.get(idStudent))){
+            this.courseList.get(idCourse).setStudentList(this.studentsList.get(idStudent));
+            this.studentsList.get(idStudent).setStudentCourses(this.courseList.get(idCourse));
+            this.courseList.get(idCourse).setMoney_earned(this.courseList.get(idCourse).getPrice());
+            System.out.println("The course has: " + this.courseList.get(idCourse).getMoney_earned() + " euro");
+            System.out.println("Student " + this.studentsList.get(idStudent).getName() + " enrolled in " + this.courseList.get(idCourse).getName() + ".");
         } else {
-            System.err.println(" Student " +  studentsList.get(idStudent).getName() + "is already enrolled in " + courseList.get(idCourse).getName() + " course.");
+            System.err.println(" Student " +  this.studentsList.get(idStudent).getName() + "is already enrolled in " + this.courseList.get(idCourse).getName() + " course.");
             System.out.println("Please choose another command.");
         }
-        mainMenu();
+        //mainMenu();
     }
 
-    public static void assignTeacher(String idTeacher, String idCourse){
+    public void assignTeacher(String idTeacher, String idCourse){
         /* if (teacherList.size() == 0) {
             System.out.println("There are no teachers in our school. Please restart your program to add them.");
             mainMenu();
@@ -90,10 +114,10 @@ public class School {
             System.err.println("Teacher " + teacherList.get(idTeacher).getName() + " is already assigned to " + courseList.get(idCourse).getName() + " course.");
             System.out.println(" Choose another command.");
         }
-        mainMenu();
+       // mainMenu();
     }
 
-    public static void showCourses(){
+    public void showCourses(){
         if (courseList.size() == 0) {
             System.out.println("There are no courses in our database. Please restart your program create one.");
             mainMenu();
@@ -102,10 +126,10 @@ public class School {
         for(String i : courseList.keySet()){
             System.out.println("Course ID: " + i + ". Name: " + courseList.get(i).getName() + ". Price: " + courseList.get(i).getPrice());
         }
-        mainMenu();
+      //  mainMenu();
     }
 
-    public static void lookUpCourse(String idCourse){
+    public  void lookUpCourse(String idCourse){
         int countT = 1;
         int countS = 1;
 
@@ -144,10 +168,10 @@ public class School {
             }
         }
 
-        mainMenu();
+      //  mainMenu();
     }
 
-    public static void createCoursesMenu(){
+    public  void createCoursesMenu(){
         Scanner scan = new Scanner(System.in);
         int n = 0;
         while (true) {
@@ -182,10 +206,10 @@ public class School {
 
             courseList.put(newCourse.getCourseId(), newCourse);
         }
-        mainMenu();
+     //   mainMenu();
     }
 
-    public static void showStudents(){
+    public  void showStudents(){
 
         if (studentsList.size() == 0) {
             System.out.println("There are no students in our database. Please restart your program to create students.");
@@ -199,10 +223,10 @@ public class School {
             System.out.println("Address: " + studentsList.get(r).getAddress());
             System.out.println("Email: " + studentsList.get(r).getEmail());
         }
-        mainMenu();
+       // mainMenu();
     }
 
-    public static void lookUpStudent(String idStudent){
+    public  void lookUpStudent(String idStudent){
         int countC = 1;
 
         /* if (studentsList.size() == 0) {
@@ -230,10 +254,10 @@ public class School {
                 System.out.println(countC++ + ". " + c.getName());
             }
         }
-        mainMenu();
+       // mainMenu();
     }
 
-    public static void createStudentsMenu(){
+    public  void createStudentsMenu(){
         Scanner scan = new Scanner(System.in);
         int n = 0;
         while (true) {
@@ -260,9 +284,9 @@ public class School {
 
             studentsList.put(newStudent.getStudentId(), newStudent);
         }
-        mainMenu();
+      //  mainMenu();
     }
-    public static void showTeachers(){
+    public  void showTeachers(){
 
         if (teacherList.size() == 0) {
             System.out.println("There are no teachers in our school. Please restart your program to add them.");
@@ -275,7 +299,7 @@ public class School {
         mainMenu();
     }
 
-    public static void lookUpTeacher(String idTeacher){
+    public  void lookUpTeacher(String idTeacher){
         int countC = 1;
 
         /* if (teacherList.size() == 0) {
@@ -303,10 +327,10 @@ public class School {
                 System.out.println(countC++ + ". " + c.getName());
             }
         }
-        mainMenu();
+      //  mainMenu();
     }
 
-    public static void createTeacherMenu(){
+    public  void createTeacherMenu(){
         Scanner scan = new Scanner(System.in);
         int n = 0;
         while (true) {
@@ -341,10 +365,10 @@ public class School {
 
             teacherList.put(newTeacher.getTeacherId(), newTeacher);
         }
-        mainMenu();
+       // mainMenu();
     }
 
-    public static void showProfit(){
+    public  void showProfit(){
         double totalMoneyEarned = 0;
         double totalSalary = 0;
         for(String c : courseList.keySet()){
@@ -362,7 +386,7 @@ public class School {
             System.out.println(profit);
         }
 
-        mainMenu();
+       // mainMenu();
     }
 
 }
